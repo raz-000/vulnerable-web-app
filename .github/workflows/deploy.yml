@@ -5,6 +5,19 @@ on:
     branches:
       - master
 jobs:
+  deploy-sast:
+    name: Example workflow using Snyk
+    on: push
+    jobs:
+      security:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@master
+          - name: Run Snyk to check for vulnerabilities
+            uses: snyk/actions/node@master
+            env:
+              SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
+
   deploy-heroku:
     name: Deploy Heroku
     runs-on: ubuntu-latest
