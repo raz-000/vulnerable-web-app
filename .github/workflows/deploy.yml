@@ -15,7 +15,8 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
         with:
-          args: --file=npm-shrinkwrap.json --file=package-lock.json
+          args: --file=npm-shrinkwrap.json
+          args: --file=package-lock.json
 
   deploy-heroku:
     name: Deploy-Heroku
