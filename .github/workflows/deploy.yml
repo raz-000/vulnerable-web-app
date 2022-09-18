@@ -16,7 +16,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
 
   deploy-heroku:
-    name: Deploy Heroku
+    name: Deploy-Heroku
     runs-on: ubuntu-latest
     needs: security
     steps:
