@@ -15,6 +15,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
         with:
+          json: true
           args: --file=package.json
       - uses: garethr/snyk-to-sarif@master
       - uses: actions/upload-artifact@v2
