@@ -15,7 +15,23 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
         with:
+          json: true
           args: --file=package.json
+      - uses: garethr/snyk-to-sarif@master
+      - uses: actions/upload-artifact@v2
+        name: SARIF
+        with:
+          path: snyk.sarif        
+      # - name: Sarif File
+      #   uses: snyk/actions/node@master
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
+      #   with:      
+      #       args: --sarif-file-output=snyk.sarif 
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
 
   deploy-heroku:
     name: Deploy-Heroku
