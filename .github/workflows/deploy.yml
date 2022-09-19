@@ -14,6 +14,8 @@ jobs:
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
+        with:
+          args: --file=package.json
 
   deploy-heroku:
     name: Deploy-Heroku
@@ -28,3 +30,4 @@ jobs:
           heroku_email: "ricardo.almario@gmail.com"
           remote_branch: "master"
           usedocker: true
+        
