@@ -15,7 +15,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SYNK_API_KEY }}
         with:
-          args: --file=/package.json | --sarif-file-output=snyk.sarif
+          args: --file package.json --sarif-file-output snyk.sarif
       # - name: Sarif File
       #   uses: snyk/actions/node@master
       #   env:
